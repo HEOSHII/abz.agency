@@ -1,0 +1,317 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: Nunito, sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  text-decoration: none;
+}
+
+:root {
+  --primary-color: #f4e041;
+  --secondary-color: #00bdd3;
+  --bg-color: #f8f8f8;
+  --black-87: rgba(0, 0, 0, 0.87);
+}
+
+body {
+  background: var(--bg-color);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+h1,
+h2 {
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.header {
+  background: #fff;
+  &__inner {
+    padding: 13px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+  }
+  &__logo {
+    line-height: 0;
+  }
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+.button {
+  width: max-content;
+  padding: 4px 23px;
+  border: none;
+  border-radius: 80px;
+  background: var(--primary-color);
+  color: var(--black-87);
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: #ffe302;
+  }
+  &:disabled {
+    background: #b4b4b4;
+    color: rgba(255, 255, 255, 0.87);
+  }
+}
+
+.board {
+  background: url(../public/assets/pexels.jpeg) center 73.3%;
+  background-repeat: no-repeat;
+  &__inner {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px 16px 71px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 21px;
+  }
+  &__title,
+  &__text {
+    color: #fff;
+    text-align: center;
+  }
+}
+
+.cards {
+  margin-top: 140px;
+  &__inner {
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+  &__title {
+    text-align: center;
+    color: var(--black-87);
+  }
+  &__users {
+    width: 100%;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .user {
+    min-width: 100%;
+    max-width: 370px;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+    &__photo {
+      border-radius: 50%;
+    }
+    &__name,
+    &__info,
+    &__position,
+    &__mail,
+    &__phone-number {
+      width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    &__info {
+      position: relative;
+    }
+  }
+}
+
+.rest {
+  margin: 140px auto 100px auto;
+  &__title {
+    text-align: center;
+  }
+  &__inner {
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    gap: 50px;
+
+    &__input,
+    &__positions {
+      width: 100%;
+    }
+
+    &__inputs {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      & .placeholder {
+        position: absolute;
+        background: transparent;
+        top: 50%;
+        left: 16px;
+        padding: 0 4px;
+        transition: all 0.2s;
+        color: #7e7e7e;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+      & .error-text {
+        position: absolute;
+        left: 16px;
+        color: #cb3d40;
+      }
+    }
+
+    &__input {
+      height: 54px;
+      border: 1px solid #d0cfcf;
+      background: transparent;
+      border-radius: 4px;
+      padding: 14px 16px;
+      transition: all 0.2s;
+      &:focus {
+        // box-shadow: 0 0 1px 2px var(--secondary-color);
+        & + .placeholder {
+          background: var(--bg-color);
+          top: 0;
+          font-size: 12px;
+        }
+      }
+    }
+    &__positions {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+    .radios {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      &__label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        &::before {
+          content: "";
+          width: 20px;
+          height: 20px;
+          border: 1px solid #d0cfcf;
+          border-radius: 50%;
+          transition: all 0.1s;
+        }
+      }
+      input {
+        display: none;
+        &:checked {
+          & + .radios__label::before {
+            border: 1px solid #00bdd3;
+            width: 20px;
+            height: 20px;
+            box-shadow: inset 0 0 0 5px var(--bg-color);
+            background: #00bdd3;
+          }
+        }
+      }
+    }
+    .photo-input {
+      width: 100%;
+      border-radius: 4px;
+      transition: all 0.2s;
+      input {
+        display: none;
+      }
+      &__inner {
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+      &__button {
+        padding: 14px 15px;
+        border: 1px solid rgba(0, 0, 0, 0.87);
+        border-radius: 4px 0px 0px 4px;
+        transition: all 0.2s;
+        cursor: pointer;
+      }
+      &__text {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid #d0cfcf;
+        border-left: none;
+        border-radius: 0 4px 4px 0;
+        color: #7e7e7e;
+        transition: all 0.2s;
+        cursor: pointer;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        position: relative;
+        & .image-loaded {
+          font-size: 30px;
+          color: green;
+          position: absolute;
+          right: 40px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      &:hover {
+        box-shadow: 0 0 1px 2px var(--secondary-color);
+      }
+      & .errors {
+        position: absolute;
+      }
+      & .error-text {
+        color: #cb3d40;
+      }
+    }
+  }
+}
+
+.user-added {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    margin-top: 50px;
+  }
+}
+
+@import "media";
